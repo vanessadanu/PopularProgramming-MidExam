@@ -8,9 +8,9 @@ import (
 )
 
 type Identity struct {
-	Name    string
+	Nama    string
 	Nim     int
-	Address string
+	Alamat string
 }
 
 var p []Identity
@@ -56,7 +56,7 @@ func postMethod(w http.ResponseWriter, r *http.Request) {
 	p = append(p, newPerson)
 
 	w.WriteHeader(http.StatusCreated)
-	fmt.Fprintf(w, "New person added: %s", newPerson.Name)
+	fmt.Fprintf(w, "%s berhasil ditambahkan", newPerson.Nama)
 }
 
 func main() {
