@@ -11,6 +11,9 @@ func sum(nums ...int) int {
 }
 
 func main() {
+	//An ellipsis (‘…’) is an indicator, used to determine a variadic function parameter, which means
+	//it accepts any number of arguments, including zero arguments. Ellipsis is placed before the data or
+	//parameter type. For example, ellipsis can be used in an array like this:
 	array := [...]int{10, 12, 14, 28, 30}
 	fmt.Printf("%T\n\n", array)
 
