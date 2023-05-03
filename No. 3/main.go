@@ -8,8 +8,8 @@ import (
 )
 
 type Identity struct {
-	Nama    string
-	Nim     int
+	Nama   string
+	Nim    string
 	Alamat string
 }
 
@@ -17,7 +17,7 @@ var p []Identity
 
 func getMethod(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		http.Error(w, "Method now allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -37,7 +37,7 @@ func getMethod(w http.ResponseWriter, r *http.Request) {
 
 func postMethod(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		http.Error(w, "Method now allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -47,6 +47,7 @@ func postMethod(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
 	err = json.Unmarshal(body, &newPerson)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -61,8 +62,8 @@ func postMethod(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	var mux = http.NewServeMux()
-	mux.HandleFunc("/get", getMethod)
-	mux.HandleFunc("/post", postMethod)
+	mux.HandleFunc("/semuadata", getMethod)
+	mux.HandleFunc("/nama", postMethod)
 
-	http.ListenAndServe(":8080", mux)
+	http.ListenAndServe(":5050", mux)
 }
